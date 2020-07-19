@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from "react";
+import { Canvas, useFrame, extend, useThree } from "react-three-fiber";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import Sun from "./Components/Sun";
+import Planet from "./Components/Planet";
+import PlanetsInfo from "./Data/PlanetsInfo";
+
+import "./App.css";
+
+extend({ OrbitControls });
+
+const Controls = () => {
+  const orbitRef = useRef();
+  const { camera, gl } = useThree();
+
+  useFrame(() => {
+    orbitRef.current.update();
+  });
+
+  return <orbitControls args={[camera, gl.domElement]} ref={orbitRef} />;
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Canvas camera={{ position: [0, 0, 20] }}>
+      <Controls />
+      <Sun />
+      {PlanetsInfo.map((planetInfo) => (
+        <Planet {...planetInfo} />
+      ))}
+    </Canvas>
   );
 }
 

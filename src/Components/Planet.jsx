@@ -7,7 +7,8 @@ const Planet = ({
   zFactor,
   orbitWidth,
   radius,
-  speed = 0.01,
+  revolutionSpeed = 0.01,
+  rotationSpeed = 0.005,
   imagePath,
 }) => {
   const texture = new THREE.TextureLoader().load(imagePath);
@@ -20,14 +21,15 @@ const Planet = ({
     } else if (mesh.current.position.x < -orbitWidth) {
       direction = 1; // Right
     }
-    mesh.current.position.x += direction * speed;
+    mesh.current.position.x += direction * revolutionSpeed;
     mesh.current.position.z =
       (zFactor * direction * (orbitWidth - Math.abs(mesh.current.position.x))) /
       orbitWidth;
+    mesh.current.rotation.z += Math.PI * rotationSpeed;
   });
 
   return (
-    <mesh position={[2, 0, 0]} ref={mesh}>
+    <mesh position={[2, 0, 0]} ref={mesh} rotation={[Math.PI / 2, 0, 0]}>
       <sphereBufferGeometry attach="geometry" args={[radius, 16, 16]} />
       <meshBasicMaterial attach="material">
         <primitive attach="map" object={texture}></primitive>

@@ -6,7 +6,7 @@ const Sun = () => {
 
   return (
     <mesh position={[0, 0, 0]}>
-      <sphereBufferGeometry attach="geometry" args={[0.5, 32, 32]} />
+      <sphereBufferGeometry attach="geometry" args={[1.0, 32, 32]} />
       <meshBasicMaterial attach="material">
         <primitive
           attach="map"

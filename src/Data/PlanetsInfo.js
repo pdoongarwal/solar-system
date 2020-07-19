@@ -1,8 +1,8 @@
 const PlanetsInfo = [
   {
     name: "Mercury",
-    zFactor: 1,
-    orbitWidth: 1,
+    zFactor: 1.5,
+    orbitWidth: 1.5,
     radius: 0.15,
     speed: 0.01,
     imagePath: "mercury.jpg",
@@ -29,8 +29,39 @@ const PlanetsInfo = [
     orbitWidth: 4,
     radius: 0.35,
     speed: 0.01,
-    color: "ffa572",
     imagePath: "mars.jpg",
+  },
+  {
+    name: "Jupiter",
+    zFactor: 5,
+    orbitWidth: 5,
+    radius: 0.45,
+    speed: 0.01,
+    imagePath: "jupiter.jpg",
+  },
+  {
+    name: "Saturn",
+    zFactor: 6,
+    orbitWidth: 6,
+    radius: 0.55,
+    speed: 0.01,
+    imagePath: "saturn.jpg",
+  },
+  {
+    name: "Uranus",
+    zFactor: 8,
+    orbitWidth: 8,
+    radius: 0.45,
+    speed: 0.01,
+    imagePath: "uranus.jpg",
+  },
+  {
+    name: "Neptune",
+    zFactor: 7,
+    orbitWidth: 7,
+    radius: 0.35,
+    speed: 0.01,
+    imagePath: "neptune.jpg",
   },
 ];
 

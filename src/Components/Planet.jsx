@@ -8,7 +8,7 @@ const Planet = ({
   orbitWidth,
   radius,
   revolutionSpeed = 0.01,
-  rotationSpeed = 0.005,
+  rotationSpeed,
   imagePath,
 }) => {
   const texture = new THREE.TextureLoader().load(imagePath);
@@ -25,7 +25,7 @@ const Planet = ({
     mesh.current.position.z =
       (zFactor * direction * (orbitWidth - Math.abs(mesh.current.position.x))) /
       orbitWidth;
-    mesh.current.rotation.z += Math.PI * rotationSpeed;
+    mesh.current.rotation.z += (Math.PI * rotationSpeed) / 10;
   });
 
   return (

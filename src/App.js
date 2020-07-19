@@ -22,11 +22,11 @@ const Controls = () => {
 
 function App() {
   return (
-    <Canvas camera={{ position: [0, 0, 20] }}>
+    <Canvas camera={{ position: [0, 0, 17] }}>
       <Controls />
       <Sun />
       {PlanetsInfo.map((planetInfo) => (
-        <Planet {...planetInfo} />
+        <Planet {...planetInfo} key={planetInfo.name} />
       ))}
     </Canvas>
   );

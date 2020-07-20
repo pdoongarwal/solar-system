@@ -45,7 +45,7 @@ function App() {
       <Canvas camera={{ position: [0, 0, 17] }}>
         <Controls autoRotate={checked} />
         {orbitRadius.map((radius) => (
-          <Orbit radius={radius} />
+          <Orbit radius={radius} key={radius} />
         ))}
         <Sun textRef={textRef} />
         {PlanetsInfo.map((planetInfo) => (
@@ -63,6 +63,7 @@ function App() {
         />
         Auto Control Camera
       </label>
+      <audio src="cosmos.mp3" autoPlay />
     </>
   );
 }

@@ -10,6 +10,7 @@ const Planet = ({
   revolutionSpeed = 0.01,
   rotationSpeed,
   imagePath,
+  textRef,
 }) => {
   const texture = new THREE.TextureLoader().load(imagePath);
   const mesh = useRef();
@@ -29,7 +30,12 @@ const Planet = ({
   });
 
   return (
-    <mesh position={[2, 0, 0]} ref={mesh} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh
+      position={[2, 0, 0]}
+      ref={mesh}
+      rotation={[Math.PI / 2, 0, 0]}
+      onPointerOver={() => (textRef.current.innerText = name)}
+    >
       <sphereBufferGeometry attach="geometry" args={[radius, 16, 16]} />
       <meshBasicMaterial attach="material">
         <primitive attach="map" object={texture}></primitive>

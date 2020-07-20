@@ -10,3 +10,14 @@ canvas {
 canvas {
   background-image: url("/universe.png");
 }
+
+.text {
+  font-family: sans-serif;
+  position: absolute;
+  color: indianred;
+  top: 5px;
+  left: 50px;
+  margin: 0;
+  font-size: 5em;
+  line-height: 1em;
+}

@@ -21,14 +21,21 @@ const Controls = () => {
 };
 
 function App() {
+  const textRef = useRef();
+
   return (
-    <Canvas camera={{ position: [0, 0, 17] }}>
-      <Controls />
-      <Sun />
-      {PlanetsInfo.map((planetInfo) => (
-        <Planet {...planetInfo} key={planetInfo.name} />
-      ))}
-    </Canvas>
+    <>
+      <Canvas camera={{ position: [0, 0, 17] }}>
+        <Controls />
+        <Sun textRef={textRef} />
+        {PlanetsInfo.map((planetInfo) => (
+          <Planet {...planetInfo} key={planetInfo.name} textRef={textRef} />
+        ))}
+      </Canvas>
+      <h1 ref={textRef} className="text">
+        Sun
+      </h1>
+    </>
   );
 }
 

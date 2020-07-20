@@ -2,8 +2,8 @@ import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 import * as THREE from "three";
 
-const orbitCalculation = function (radius, revolutionSpeed) {
-  const speedConstant = 6000 / revolutionSpeed;
+const orbitCalculation = function (radius, revolutionDuration) {
+  const speedConstant = 6000 * revolutionDuration;
   return {
     x:
       Math.sin(((Date.now() % speedConstant) / speedConstant) * Math.PI * 2) *
@@ -18,7 +18,7 @@ const Planet = ({
   name,
   orbitRadius,
   radius,
-  revolutionSpeed,
+  revolutionDuration,
   rotationSpeed,
   imagePath,
   textRef,
@@ -27,7 +27,7 @@ const Planet = ({
   const mesh = useRef();
 
   useFrame(() => {
-    const position = orbitCalculation(orbitRadius, revolutionSpeed);
+    const position = orbitCalculation(orbitRadius, revolutionDuration);
     mesh.current.position.x = position.x;
     mesh.current.position.z = position.z;
     mesh.current.rotation.z += (Math.PI * rotationSpeed) / 10;

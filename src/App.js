@@ -14,12 +14,15 @@ const Controls = ({ autoRotate }) => {
   const orbitRef = useRef();
   const { camera, gl } = useThree();
   let angle = 0;
+  camera.position.x = 0;
+  camera.position.y = 15;
+  camera.position.z = 25;
 
   useFrame(() => {
     if (autoRotate) {
-      camera.position.x = 17 * Math.cos(angle);
-      camera.position.y = 17 * Math.sin(angle);
-      camera.position.z = 17 * Math.sin(angle);
+      camera.position.x = 10 * Math.cos(angle);
+      camera.position.y = 10 * Math.sin(angle);
+      camera.position.z = 10 * Math.tan(angle);
       angle += 0.001;
     }
     orbitRef.current.update();
@@ -30,6 +33,7 @@ const Controls = ({ autoRotate }) => {
 
 function App() {
   const textRef = useRef();
+  const [checked, setChecked] = React.useState(false);
 
   const orbitRadius = [];
   for (let radius = 2; radius <= 16; radius += 2) {
@@ -39,7 +43,7 @@ function App() {
   return (
     <>
       <Canvas camera={{ position: [0, 0, 17] }}>
-        <Controls autoRotate={false} />
+        <Controls autoRotate={checked} />
         {orbitRadius.map((radius) => (
           <Orbit radius={radius} />
         ))}
@@ -51,6 +55,14 @@ function App() {
       <h1 ref={textRef} className="text">
         Sun
       </h1>
+      <label className="auto-rotate">
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+        />
+        Auto Control Camera
+      </label>
     </>
   );
 }

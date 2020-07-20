@@ -21,3 +21,10 @@ canvas {
   font-size: 5em;
   line-height: 1em;
 }
+
+.auto-rotate {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  color: white;
+}

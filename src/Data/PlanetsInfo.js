@@ -5,7 +5,7 @@ const PlanetsInfo = [
     radius: 0.2,
     rotationSpeed: 0.0017,
     imagePath: "mercury.jpg",
-    revolutionSpeed: 1 / 0.2,
+    revolutionDuration: 0.2,
   },
   {
     name: "Venus",
@@ -13,14 +13,14 @@ const PlanetsInfo = [
     radius: 0.3,
     rotationSpeed: 0.00041,
     imagePath: "venus.jpg",
-    revolutionSpeed: 1 / 0.6,
+    revolutionDuration: 0.6,
   },
   {
     name: "Earth",
     orbitRadius: 6,
     radius: 0.4,
     rotationSpeed: 0.1,
-    revolutionSpeed: 1,
+    revolutionDuration: 1,
     imagePath: "earth.jpg",
   },
   {
@@ -29,7 +29,7 @@ const PlanetsInfo = [
     radius: 0.5,
     rotationSpeed: 0.096,
     imagePath: "mars.jpg",
-    revolutionSpeed: 1 / 1.9,
+    revolutionDuration: 1.9,
   },
   {
     name: "Jupiter",
@@ -37,7 +37,7 @@ const PlanetsInfo = [
     radius: 0.7,
     rotationSpeed: 0.24,
     imagePath: "jupiter.jpg",
-    revolutionSpeed: 1 / 11.9,
+    revolutionDuration: 11.9,
   },
   {
     name: "Saturn",
@@ -45,7 +45,7 @@ const PlanetsInfo = [
     radius: 0.7,
     rotationSpeed: 0.218,
     imagePath: "saturn.jpg",
-    revolutionSpeed: 1 / 29.5,
+    revolutionDuration: 29.5,
   },
   {
     name: "Uranus",
@@ -53,7 +53,7 @@ const PlanetsInfo = [
     radius: 0.6,
     rotationSpeed: 0.141,
     imagePath: "uranus.jpg",
-    revolutionSpeed: 1 / 84,
+    revolutionDuration: 84,
   },
   {
     name: "Neptune",
@@ -61,7 +61,7 @@ const PlanetsInfo = [
     radius: 0.6,
     rotationSpeed: 0.15,
     imagePath: "neptune.jpg",
-    revolutionSpeed: 1 / 164.8,
+    revolutionDuration: 164.8,
   },
 ];
 

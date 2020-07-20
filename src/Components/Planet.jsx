@@ -2,30 +2,34 @@ import React, { useRef } from "react";
 import { useFrame } from "react-three-fiber";
 import * as THREE from "three";
 
+const orbitCalculation = function (radius, revolutionSpeed) {
+  const speedConstant = 6000 / revolutionSpeed;
+  return {
+    x:
+      Math.sin(((Date.now() % speedConstant) / speedConstant) * Math.PI * 2) *
+      radius,
+    z:
+      Math.cos(((Date.now() % speedConstant) / speedConstant) * Math.PI * 2) *
+      radius,
+  };
+};
+
 const Planet = ({
   name,
-  zFactor,
-  orbitWidth,
+  orbitRadius,
   radius,
-  revolutionSpeed = 0.01,
+  revolutionSpeed,
   rotationSpeed,
   imagePath,
   textRef,
 }) => {
   const texture = new THREE.TextureLoader().load(imagePath);
   const mesh = useRef();
-  let direction = 1;
 
   useFrame(() => {
-    if (mesh.current.position.x > orbitWidth) {
-      direction = -1; // Left
-    } else if (mesh.current.position.x < -orbitWidth) {
-      direction = 1; // Right
-    }
-    mesh.current.position.x += direction * revolutionSpeed;
-    mesh.current.position.z =
-      (zFactor * direction * (orbitWidth - Math.abs(mesh.current.position.x))) /
-      orbitWidth;
+    const position = orbitCalculation(orbitRadius, revolutionSpeed);
+    mesh.current.position.x = position.x;
+    mesh.current.position.z = position.z;
     mesh.current.rotation.z += (Math.PI * rotationSpeed) / 10;
   });
 
